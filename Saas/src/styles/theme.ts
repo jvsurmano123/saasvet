@@ -1,4 +1,4 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme, alpha } from '@mui/material/styles';
 
 declare module '@mui/material/styles' {
   interface Palette {
@@ -19,142 +19,129 @@ declare module '@mui/material/styles' {
   }
 }
 
-export const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#2563EB', // Azul principal
-      light: '#60A5FA',
-      dark: '#1E40AF',
-      contrastText: '#FFFFFF',
+// Função para criar o tema baseado no modo (claro/escuro)
+export function createAppTheme(isDarkMode: boolean) {
+  return createTheme({
+    palette: {
+      mode: isDarkMode ? 'dark' : 'light',
+      primary: {
+        main: '#2563EB',
+        light: '#60A5FA',
+        dark: '#1E40AF',
+        contrastText: '#FFFFFF',
+      },
+      secondary: {
+        main: '#10B981',
+        light: '#34D399',
+        dark: '#059669',
+        contrastText: '#FFFFFF',
+      },
+      background: {
+        default: isDarkMode ? '#111827' : '#F3F4F6',
+        paper: isDarkMode ? '#1F2937' : '#FFFFFF',
+      },
+      text: {
+        primary: isDarkMode ? '#F9FAFB' : '#111827',
+        secondary: isDarkMode ? '#D1D5DB' : '#4B5563',
+      },
+      error: {
+        main: '#EF4444',
+      },
+      warning: {
+        main: '#F59E0B',
+      },
+      info: {
+        main: '#3B82F6',
+      },
+      success: {
+        main: '#10B981',
+      },
+      neutral: {
+        main: isDarkMode ? '#6B7280' : '#9CA3AF',
+        light: isDarkMode ? '#9CA3AF' : '#D1D5DB',
+        dark: isDarkMode ? '#4B5563' : '#6B7280',
+        contrastText: isDarkMode ? '#F9FAFB' : '#111827',
+      },
+      divider: isDarkMode ? alpha('#FFFFFF', 0.12) : alpha('#000000', 0.12),
     },
-    secondary: {
-      main: '#10B981', // Verde esmeralda
-      light: '#34D399',
-      dark: '#059669',
-      contrastText: '#FFFFFF',
+    typography: {
+      fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
+      h1: {
+        fontSize: '2.5rem',
+        fontWeight: 600,
+      },
+      h2: {
+        fontSize: '2rem',
+        fontWeight: 600,
+      },
+      h3: {
+        fontSize: '1.75rem',
+        fontWeight: 600,
+      },
+      h4: {
+        fontSize: '1.5rem',
+        fontWeight: 600,
+      },
+      h5: {
+        fontSize: '1.25rem',
+        fontWeight: 600,
+      },
+      h6: {
+        fontSize: '1rem',
+        fontWeight: 600,
+      },
+      subtitle1: {
+        fontSize: '1rem',
+        fontWeight: 500,
+      },
+      subtitle2: {
+        fontSize: '0.875rem',
+        fontWeight: 500,
+      },
+      body1: {
+        fontSize: '1rem',
+      },
+      body2: {
+        fontSize: '0.875rem',
+      },
+      button: {
+        textTransform: 'none',
+        fontWeight: 500,
+      },
     },
-    neutral: {
-      main: '#6B7280',
-      light: '#9CA3AF',
-      dark: '#4B5563',
-      contrastText: '#FFFFFF',
+    shape: {
+      borderRadius: 8,
     },
-    error: {
-      main: '#EF4444',
-      light: '#F87171',
-      dark: '#DC2626',
-    },
-    warning: {
-      main: '#F59E0B',
-      light: '#FBBF24',
-      dark: '#D97706',
-    },
-    info: {
-      main: '#3B82F6',
-      light: '#60A5FA',
-      dark: '#2563EB',
-    },
-    success: {
-      main: '#10B981',
-      light: '#34D399',
-      dark: '#059669',
-    },
-    background: {
-      default: '#F9FAFB',
-      paper: '#FFFFFF',
-    },
-    text: {
-      primary: '#111827',
-      secondary: '#4B5563',
-      disabled: '#9CA3AF',
-    },
-  },
-  typography: {
-    fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
-    h1: {
-      fontSize: '2.5rem',
-      fontWeight: 600,
-      lineHeight: 1.2,
-    },
-    h2: {
-      fontSize: '2rem',
-      fontWeight: 600,
-      lineHeight: 1.3,
-    },
-    h3: {
-      fontSize: '1.75rem',
-      fontWeight: 600,
-      lineHeight: 1.3,
-    },
-    h4: {
-      fontSize: '1.5rem',
-      fontWeight: 500,
-      lineHeight: 1.4,
-    },
-    h5: {
-      fontSize: '1.25rem',
-      fontWeight: 500,
-      lineHeight: 1.4,
-    },
-    h6: {
-      fontSize: '1rem',
-      fontWeight: 500,
-      lineHeight: 1.4,
-    },
-    body1: {
-      fontSize: '1rem',
-      lineHeight: 1.5,
-    },
-    body2: {
-      fontSize: '0.875rem',
-      lineHeight: 1.5,
-    },
-    button: {
-      textTransform: 'none',
-      fontWeight: 500,
-    },
-  },
-  shape: {
-    borderRadius: 8,
-  },
-  shadows: [
-    'none',
-    '0px 1px 2px rgba(0, 0, 0, 0.05)',
-    '0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.06)',
-    '0px 4px 6px -1px rgba(0, 0, 0, 0.1), 0px 2px 4px -1px rgba(0, 0, 0, 0.06)',
-    '0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -2px rgba(0, 0, 0, 0.05)',
-    '0px 20px 25px -5px rgba(0, 0, 0, 0.1), 0px 10px 10px -5px rgba(0, 0, 0, 0.04)',
-    '0px 25px 50px -12px rgba(0, 0, 0, 0.25)',
-    ...Array(18).fill('none'),
-  ],
-  components: {
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          borderRadius: '0.5rem',
-          textTransform: 'none',
-          fontWeight: 500,
-          padding: '0.5rem 1rem',
+    shadows: [
+      'none',
+      '0px 2px 4px rgba(0,0,0,0.05)',
+      '0px 4px 8px rgba(0,0,0,0.1)',
+      '0px 8px 16px rgba(0,0,0,0.1)',
+      '0px 16px 24px rgba(0,0,0,0.1)',
+      '0px 24px 32px rgba(0,0,0,0.1)',
+      ...Array(19).fill('none'),
+    ],
+    components: {
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            borderRadius: 8,
+            textTransform: 'none',
+            fontWeight: 500,
+          },
         },
-        contained: {
-          boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.05)',
+      },
+      MuiCard: {
+        styleOverrides: {
+          root: {
+            borderRadius: 12,
+            boxShadow: '0px 4px 8px rgba(0,0,0,0.1)',
+          },
         },
       },
     },
-    MuiCard: {
-      styleOverrides: {
-        root: {
-          borderRadius: '0.75rem',
-          boxShadow: '0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.06)',
-        },
-      },
-    },
-    MuiPaper: {
-      styleOverrides: {
-        root: {
-          borderRadius: '0.75rem',
-        },
-      },
-    },
-  },
-});
+  });
+}
+
+// Tema padrão (claro)
+export const theme = createAppTheme(false);

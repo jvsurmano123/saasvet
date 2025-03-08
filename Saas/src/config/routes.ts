@@ -21,6 +21,14 @@ export const ROUTES = {
       EDIT: '/dashboard/patients/:id/edit',
     },
     
+    // Tutores
+    TUTORS: {
+      LIST: '/dashboard/tutors',
+      NEW: '/dashboard/tutors/new',
+      DETAILS: '/dashboard/tutors/:id',
+      EDIT: '/dashboard/tutors/:id/edit',
+    },
+    
     // Consultas
     APPOINTMENTS: {
       LIST: '/dashboard/appointments',
